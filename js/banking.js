@@ -1,13 +1,26 @@
 const depositBtn = document.getElementById('deposit-btn');
 const withdrawBtn = document.getElementById('withdraw-btn');
 
+function getInputValue(inputId) {
+    //  input value 
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amount = parseFloat(inputAmountText)
+    // clear deposit input value  
+    inputField.value = '';
+    return amount;
+}
+
+
 // handel deposti btn 
 depositBtn.addEventListener('click', function () {
-    // deposit input value 
-    const depositInput = document.getElementById('deposit-input');
-    const depositAmountText = depositInput.value;
-    const depositAmount = parseFloat(depositAmountText)
-    // console.log(depositAmount)
+    /* 
+     //  input value 
+     const depositInput = document.getElementById('deposit-input');
+     const depositAmountText = depositInput.value;
+     const depositAmount = parseFloat(depositAmountText)
+     */
+    const depositAmount = getInputValue('deposit-input')
 
     //update total deposit  
     const depositTotal = document.getElementById('deposit-total');
@@ -21,18 +34,16 @@ depositBtn.addEventListener('click', function () {
     const previousBlanceTotal = parseFloat(blanceTotalText)
     blanceTotal.innerText = previousBlanceTotal + depositAmount;
 
-    // clear deposit input value  
-    depositInput.value = '';
-
-})
+});
 
 // handel withdraw btn 
 withdrawBtn.addEventListener('click', function () {
-    // withdraw input 
+    /* // withdraw input 
     const withdrawInput = document.getElementById('withdraw-input');
     const withdrawAmountText = withdrawInput.value;
     const withdrawAmount = parseFloat(withdrawAmountText);
-
+ */
+    const withdrawAmount = getInputValue('withdraw-input')
     // update withdraw total 
     const withdrawTotal = document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
@@ -45,6 +56,4 @@ withdrawBtn.addEventListener('click', function () {
     const previousBlanceTotal = parseFloat(blanceTotalText)
     blanceTotal.innerText = previousBlanceTotal - withdrawAmount;
 
-    // clear withdraw input 
-    withdrawInput.value = '';
-})
+});
