@@ -11,22 +11,31 @@ function getInputValue(inputId) {
     return amount;
 }
 
+function updateTotalField(fieldId, amount) {
+    const totalElement = document.getElementById(fieldId);
+    const totaltext = totalElement.innerText;
+    const totalAmount = parseFloat(totaltext)
+    totalElement.innerText = amount + totalAmount;
+}
 
 // handel deposti btn 
 depositBtn.addEventListener('click', function () {
     /* 
-     //  input value 
+     //  input deposit value 
      const depositInput = document.getElementById('deposit-input');
      const depositAmountText = depositInput.value;
      const depositAmount = parseFloat(depositAmountText)
      */
     const depositAmount = getInputValue('deposit-input')
 
-    //update total deposit  
-    const depositTotal = document.getElementById('deposit-total');
-    const depositTotaltext = depositTotal.innerText;
-    const depositTotalAmount = parseFloat(depositTotaltext)
-    depositTotal.innerText = depositAmount + depositTotalAmount;
+    /* 
+     //update total deposit  
+     const depositTotal = document.getElementById('deposit-total');
+     const depositTotaltext = depositTotal.innerText;
+     const depositTotalAmount = parseFloat(depositTotaltext)
+     depositTotal.innerText = depositAmount + depositTotalAmount;
+  */
+    updateTotalField('deposit-total', depositAmount)
 
     // update blance total  
     const blanceTotal = document.getElementById('blance-total');
@@ -43,12 +52,15 @@ withdrawBtn.addEventListener('click', function () {
     const withdrawAmountText = withdrawInput.value;
     const withdrawAmount = parseFloat(withdrawAmountText);
  */
-    const withdrawAmount = getInputValue('withdraw-input')
-    // update withdraw total 
+    const withdrawAmount = getInputValue('withdraw-input');
+
+    /* // update withdraw total 
     const withdrawTotal = document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
     const withdrawTotalAmount = parseFloat(withdrawTotalText);
     withdrawTotal.innerText = withdrawTotalAmount + withdrawAmount;
+ */
+    updateTotalField('withdraw-total', withdrawAmount)
 
     // update blance total 
     const blanceTotal = document.getElementById('blance-total');
